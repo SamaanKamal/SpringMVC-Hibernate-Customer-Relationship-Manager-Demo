@@ -54,6 +54,13 @@ public class CustomerDAOImplementation implements CustomerDAO {
         query.executeUpdate();
     }
 
-
+    @Override
+    public void deleteCustomer(int id) {
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("delete from Customer where id = :theId");
+        query.setParameter("theId", id);
+        session.joinTransaction();
+        query.executeUpdate();
+    }
 
 }
