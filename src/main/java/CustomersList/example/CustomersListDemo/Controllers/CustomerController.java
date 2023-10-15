@@ -34,7 +34,6 @@ public class CustomerController {
 
     @PostMapping("/saveCustomer")
     public String saveCustomer(@ModelAttribute("customer") Customer theCustomer){
-        System.out.println("customer from saving "+ theCustomer.getFirstName());
         customerService.saveCustomer(theCustomer);
         return "redirect:/customer/list";
     }
@@ -42,21 +41,17 @@ public class CustomerController {
     @GetMapping("/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("customerId") int id,Model theModel){
         Customer customer = customerService.getCustomer(id);
-        System.out.println("customer from showing form "+ customer.getFirstName());
         theModel.addAttribute("customer",customer);
         return "customer-form";
     }
 
     @PostMapping("/updateCustomer")
     public String updateCustomer(@ModelAttribute("customer") Customer theCustomer){
-//        Customer customer = customerService.getCustomer(id);
-        System.out.println(theCustomer.getId());
-        System.out.println(theCustomer.getFirstName());
-        System.out.println(theCustomer.getLastName());
-        System.out.println("customer from saving "+ theCustomer.getFirstName());
         customerService.updateCustomer(theCustomer);
         return "redirect:/customer/list";
     }
+
+
 
 
 }
