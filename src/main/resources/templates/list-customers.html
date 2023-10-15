@@ -24,11 +24,16 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
+                <th>Action</th>
             </tr>
             <tr th:each="tempCustomer : ${customers}">
                 <td th:text="${tempCustomer.firstName}"></td>
                 <td th:text="${tempCustomer.lastName}"></td>
                 <td th:text="${tempCustomer.email}"></td>
+                <td>
+                    <!-- Construct an "update" link with customer id -->
+                    <a th:href="@{/customer/showFormForUpdate(customerId=${tempCustomer.id})}">Update</a>
+                </td>
             </tr>
         </table>
     </div>

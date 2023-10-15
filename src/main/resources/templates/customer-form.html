@@ -15,6 +15,8 @@
 <div id="container">
     <h3>Save Customer</h3>
     <form th:action="@{/customer/saveCustomer}" th:object="${customer}" method="POST">
+        <!-- need to associate this data with customer id -->
+        <input type="hidden" th:field="*{id}" />
         <table>
             <tbody>
             <tr>
@@ -35,6 +37,30 @@
             </tr>
             </tbody>
         </table>
+    </form>
+    <form th:action="@{/customer/updateCustomer}"  th:object="${customer}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <table>
+            <tbody>
+            <tr>
+                <td><label for="firstName">First name:</label></td>
+                <td><input type="text" th:field="*{firstName}" id="firstName2"></td>
+            </tr>
+            <tr>
+                <td><label for="lastName">Last name:</label></td>
+                <td><input type="text" th:field="*{lastName}" id="lastName2"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="text" th:field="*{email}" id="email2"></td>
+            </tr>
+            <tr>
+                <td><label></label></td>
+                <td><input type="submit" value="Update" class="save"></td>
+            </tr>
+            </tbody>
+        </table>
+<!--        <button type="submit" class="save">Update</button>-->
     </form>
     <div style="clear: both;"></div>
     <p>
